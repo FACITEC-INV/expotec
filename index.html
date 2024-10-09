@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Evaluación de trabajos</title>
+</head>
+<body style="margin:0px;padding:0px;overflow:hidden">
+    <iframe id="miIframe" frameborder="0" style="overflow:hidden;overflow-x:hidden;overflow-y:hidden;height:100%;width:100%;position:absolute;top:0px;left:0px;right:0px;bottom:0px" height="100%" width="100%"></iframe>
+    <script>
+      // Obtener los parámetros de la URL principal
+      const urlParams = new URLSearchParams(window.location.search);
+      
+      const route = urlParams.get('route') || 'home';
+      const conference = "expotec24";
+      const trabajo = urlParams.get('trabajo');
+      const evaluador = urlParams.get('evaluador');
+      const category = urlParams.get('category');
+      
+    
+      // Construir la URL para el iframe con los parámetros
+      const iframeSrc = `https://script.google.com/macros/s/AKfycbxlCfeg3LXvVyjWOK5AcEuTrtTRBQvEBdw_wDPgowrYf1fu86mV766cTKtw63virRWC/exec?route=${route}&conference=${conference}&category=${category}&trabajo=${trabajo}&evaluador=${evaluador}`;
+      
+      // Asignar la URL al iframe
+      document.getElementById('miIframe').src = iframeSrc;
+
+      console.log(document.getElementById('miIframe'))
+
+      window.addEventListener('pageshow', function(event) {
+        if (event.persisted) {
+          window.location.reload();  // Forzar recarga completa de la página
+        }
+      });
+
+    </script>
+</body>
+</html>
